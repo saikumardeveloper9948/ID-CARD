@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>form based ID card JS</title>
+    <style>
+      body {
+        width: 500px;
+        margin: 100px auto;
+      }
+
+      fieldset {
+        width: 40vw;
+      }
+
+      #maindiv {
+        height: 280px;
+        width: 450px;
+        border-radius: 10px;
+        border: 2px solid red;
+        background-image: url("https://files.123freevectors.com/wp-content/original/142564-abstract-blue-wave-business-background.jpg");
+        background-size: cover;
+        /* display:none; */
+        visibility:hidden;
+      }
+
+      #head {
+        text-align: center;
+        font-size: 40px;
+        margin-top: 10px;
+        color: red;
+      }
+
+      #para {
+        /* border: 2px solid; */
+        text-align: right;
+        margin-right: 20px;
+        margin-top: -32px;
+        color: rgb(255, 221, 0);
+      }
+
+      #section {
+        display: grid;
+        grid-template-rows: auto auto;
+        grid-template-columns: auto auto;
+        gap: 20px;
+      }
+
+      #image1 {
+        border-radius: 50%;
+        /* border: 1px solid; */
+        height: 140px;
+        width: 140px;
+        margin-top: 20px;
+        margin-left: 15px;
+        box-shadow: 0 0 50px rgb(0, 255, 81);
+      }
+
+      #form {
+        border: 2px solid red;
+        background-color: white;
+        border-radius: 20px 0 20px 0;
+        /* margin-top:13px; */
+        padding-top: 10px;
+        margin-left: 40px;
+        width: 200px;
+        height: 170px;
+        font-size: 16px;
+        color: black;
+      }
+
+      .details {
+        padding-top: 5px;
+        /* border:2px solid; */
+        margin-left: 10px;
+        margin-top: -8px;
+        font-size: 15px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <fieldset>
+      <legend>ID CARD DETAILS</legend>
+      <form action="" id="form1">
+        <input id="fname" type="text" placeholder="First name" required />
+        <input id="sname" type="text" placeholder="last name" required />
+        <br /><br />
+        <input id="rollno" type="text" placeholder="roll no" required />
+        <input
+          id="batch"
+          type="text"
+          placeholder="Batch No"
+          required
+        /><br /><br />
+        <input id="degree" type="text" placeholder="degree and YOP " required />
+        <input id="course" type="text" placeholder="course" required />
+        <br /><br />
+        <input id="mobileno" type="number" placeholder="mobile No" required />
+        <input
+          id="duration"
+          type="number"
+          placeholder="Duration in months"
+          required
+        />
+        <br /><br />
+        <input id="image" type="file" required />
+        <input id="reset" type="reset" value="Reset" />
+        <input id="submit" type="submit" />
+      </form>
+    </fieldset>
+
+    <div id="maindiv">
+      <div id="navbar">
+        <h1 id="head">10000 C{}DER'S</h1>
+        <p id="para"><span>Write</span> Path for Bright <span>Future</span></p>
+      </div>
+      <div id="section">
+        <img id="image1" />
+        <div id="form">
+          <p class="details">Name :</p>
+          <p class="details"></p>
+          <p class="details">Batch No :</p>
+          <p class="details">Graduation :</p>
+          <p class="details">Course :</p>
+          <p class="details">Mobile no :</p>
+          <!-- <p class="details">Duration :</p> -->
+        </div>
+      </div>
+    </div>
+
+    <script>
+      
+      let form = document.getElementById("form1");
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        let maindiv1=document.getElementById("maindiv")
+      maindiv1.style.visibility="visible"
+        let ip1 = document.getElementById("fname");
+        let ip2 = document.getElementById("sname");
+        let result = ip1.value.toUpperCase() + ip2.value.toUpperCase();
+        let rollno1 = document.getElementById("rollno").value.toUpperCase();
+        let batch1 = document.getElementById("batch").value.toUpperCase();
+        let degree = document.getElementById("degree").value.toUpperCase();
+        let course1 = document.getElementById("course").value.toUpperCase();
+        let mobileno = document.getElementById("mobileno").value;
+        let duration1 = document.getElementById("duration").value;
+        let img1 = document.getElementById("image");
+
+        let sections = document.getElementById("form");
+        let sec = sections.getElementsByTagName("p");
+        // sec.style.display="block"
+
+        sec[0].innerHTML = "Name :" + result;
+        sec[1].innerHTML = `Roll no : ${rollno1}`;
+        sec[2].innerHTML = `Batch : ${batch1}`;
+        sec[3].innerHTML = `Graduation: ${degree}`;
+        sec[4].innerHTML = `Course : ${course1}`;
+        sec[5].innerHTML = `Mobile No : ${mobileno}`;
+        //   sec[6].innerHTML = `Duration : ${duration1} months`;
+
+        let img = document.getElementById("image1");
+        img.src = URL.createObjectURL(img1.files[0]);
+
+          
+
+
+      });
+
+      form.addEventListener("reset",()=>{
+       
+              let maindiv1=document.getElementById("maindiv");
+
+              maindiv1.style.visibility="hidden";
+          })
+    </script>
+  </body>
+</html>
